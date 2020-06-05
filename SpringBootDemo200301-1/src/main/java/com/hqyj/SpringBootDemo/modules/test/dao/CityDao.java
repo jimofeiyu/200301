@@ -2,11 +2,16 @@ package com.hqyj.SpringBootDemo.modules.test.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.hqyj.SpringBootDemo.modules.common.vo.SearchVo;
 import com.hqyj.SpringBootDemo.modules.test.entity.City;
+
 
 
 @Mapper
@@ -49,6 +54,21 @@ public interface CityDao {
 				+ "</choose>"
 				+ "</script>")
 		List<City> getCitiesBySearchVo(SearchVo searchVo);
+	
+	
+	
+	    @Insert("insert into m_city (city_name, local_city_name, country_id, date_created) "
+				+ "values (#{cityName}, #{localCityName}, #{countryId}, #{dateCreated})")
+	    @Options(useGeneratedKeys = true,keyColumn = "city_id",keyProperty = "cityId")
+	    void insertCity(City city);
+        
+	    @Update("upate m_city set local_city_name =#{localCityName} where city_id=#{cityId}")
+	    void updateCity( City city);
+	    
+	    @DeleteMapping("delete from m_city where city_id = #{cityId}")
+		void deleteCity(int  cityId);
+	    
+       
 	
 
 }

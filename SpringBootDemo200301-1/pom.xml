@@ -23,6 +23,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+			<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		
+		<!-- pool -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+		
+			<!-- commons -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -34,7 +52,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.25</version>
+            <version>5.1.25</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
         
         	<!-- mybatis -->
@@ -63,6 +81,19 @@
         	<artifactId>spring-boot-configuration-processor</artifactId>
         	<optional>true</optional>
         </dependency>
+        
+        <dependency>	
+        <groupId>org.springframework.boot</groupId>
+	         <artifactId>spring-boot-devtools</artifactId>	
+	         <optional>true</optional>
+        </dependency>
+
+	    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+	    <dependency>
+		      <groupId>org.springframework.boot</groupId>
+		      <artifactId>spring-boot-starter-data-jpa</artifactId>
+	    </dependency>
+        
 	</dependencies>
 
 	<build>
