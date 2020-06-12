@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 
 /**
  * 角色类
- * @author: 即墨飞鱼
+ * @author: jimofeiyu
 
  */
 @Entity
