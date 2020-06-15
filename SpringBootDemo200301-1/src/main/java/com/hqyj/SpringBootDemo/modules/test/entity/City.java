@@ -19,6 +19,14 @@ public class City {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateCreated;
+	private  String  countryName;
+	
+	public String getCountryName() {
+		return countryName;
+	}
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
 	public int getCityId() {
 		return cityId;
 	}

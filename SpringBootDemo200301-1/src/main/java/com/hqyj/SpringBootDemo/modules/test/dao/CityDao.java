@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import com.hqyj.SpringBootDemo.modules.common.vo.SearchVo;
 import com.hqyj.SpringBootDemo.modules.test.entity.City;
 
+import io.lettuce.core.dynamic.annotation.Param;
+
 
 
 @Mapper
@@ -34,8 +36,8 @@ public interface CityDao {
 	@Select("select*from m_city where country_id=#{countryId}")
 	List<City> getCityesByCountryId2(int countryId);
 	
-	@Select("select *from m_city where city_name=#{cityName} and local_city_name=#{localCityName}")
-    City getCitiesByName(String cityName,String locaCityName);
+	@Select("select *from m_city c left join m_country co on c.country_id = co.country_id where c.city_name=#{cityName} and c.local_city_name=#{localCityName}")
+    City getCitiesByName(@Param("cityName")String cityName,String locaCityName);
 	
 	@Select("<script>"+
 	            "select *from m_city"

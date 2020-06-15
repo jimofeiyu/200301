@@ -2,10 +2,15 @@ package com.hqyj.SpringBootDemo.modules.account.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.hqyj.SpringBootDemo.modules.account.entity.User;
 import com.hqyj.SpringBootDemo.modules.common.vo.SearchVo;
@@ -21,7 +26,7 @@ public interface UserDao {
 	@Select("select * from user where user_name = #{userName}")
 	User getUserByUserName(String userName);
 	
-	@Select("<script>" +
+	@Select("<script>" + 
 			"select * from user "
 			+ "<where> "
 			+ "<if test='keyWord != \"\" and keyWord != null'>"
@@ -36,9 +41,22 @@ public interface UserDao {
 			+ " order by user_id desc"
 			+ "</otherwise>"
 			+ "</choose>"
-			+ "</script>"
-			)
-	
-
+			+ "</script>")
 	List<User> getUsersBySearchVo(SearchVo searchVo);
+	
+	@Select("select * from user where user_id=#{userId}")
+	@Results(id="userResult", value={
+			@Result(column="user_id", property="userId"),
+			@Result(column="user_id",property="roles",
+					javaType=List.class,
+					many=@Many(select="com.hqyj.SpringBootDemo.modules.account.dao."
+							+ "RoleDao.getRolesByUserId"))
+		})
+	User getUserByUserId(int userId);
+	
+	@Update("update user set user_name = #{userName} where user_id = #{userId}")
+	void updateUser(User user);
+	
+	@Delete("delete from user where user_id = #{userId}")
+	void deleteUser(int userId);
 }
