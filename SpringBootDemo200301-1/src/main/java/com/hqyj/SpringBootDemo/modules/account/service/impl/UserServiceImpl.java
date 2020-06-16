@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	public Result<User> insertUser(User user) {
 		User userTemp = getUserByUserName(user.getUserName());
 		if (userTemp != null) {
-			return new Result<User>(ResultStatus.FAILD.status, "User name is repeat.");
+			return new Result<User>(ResultStatus.FAILED.status, "User name is repeat.");
 		}
 		
 		user.setCreateDate(new Date());
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 	public Result<User> login(User user) {
 		User userTemp = userDao.getUserByUserName(user.getUserName());
 		if (userTemp == null || !userTemp.getPassword().equals(MD5Util.getMD5(user.getPassword()))) {
-			return new Result<User>(ResultStatus.FAILD.status, "User name or password error.");
+			return new Result<User>(ResultStatus.FAILED.status, "User name or password error.");
 		}
 		
 		return new Result<User>(ResultStatus.SUCCESS.status, "Login success.", userTemp);
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
 	public Result<User> updateUser(User user) {
 		User userTemp = getUserByUserName(user.getUserName());
 		if (userTemp != null) {
-			return new Result<User>(ResultStatus.FAILD.status, "User name is repeat.");
+			return new Result<User>(ResultStatus.FAILED.status, "User name is repeat.");
 		}
 		
 		userDao.updateUser(user);
