@@ -1,0 +1,138 @@
+一、选择题（共12小题，每小题2.5分，共30分）
+	以下不是spring boot优点的是 (D)
+		A．快速搭建项目
+		B．简化配置  
+		C．自动配置  
+		D．无需容器
+	Spring Boot配置，以下哪个优先级最高（B）
+		A、外置：xx.jar同目录下/config/application.properties；
+		B、外置：xx.jar同目录下/config/application.yml；
+		C、内置：src/main/resources/config；
+		D、内置：src/main/resources
+	以下log日志级别哪个最高（D）
+		A、DEBUG
+		B、INFO
+		C、WARN
+		D、ERROR
+	以下不是spring boot的核心注解的是 (D)
+		A.	@SpringBootConfiguration
+		B.	@EnableAutoConfiguration
+		C.	@ComponentScan
+		D.	@MapperScan
+	要使用springMVC的功能，以下哪个架包是必须加的 ( C)
+		A．spring-boot-starter-jdbc  
+		B．spring-boot-starter-thymeleaf  
+		C．spring-boot-starter-web  
+		D．mybatis-spring-boot-starter
+	以下哪个注解不能加在类上 (B)
+		A.	@Controller
+		B.	@ResponseBody
+		C.	@RestController
+		D.	@RequestMapping
+	当控制层上有@RestController注解时，方法中返回一个字符串“<h1>Hello</h1>” 的结果是 (C)
+		A. 一级标题显示的Hello
+		B.	找不到Hello.html
+		C.	<h1>Hello</>
+		D.	Hello
+	SpringBoot项目中配置文件的格式 (C)
+		A．properties  
+		B．yml  
+		C．两者都可以
+	前台使用json参数格式，控制器consumer、参数使用的注解是（A）
+		A、application/josn ---- @RequestBody
+		B、application/josn ---- @ModelAttribute
+		C、application/x-www-form-urlencoded ---- @RequestBody
+		D、application/x-www-form-urlencoded ---- @ModelAttribute
+	@Pointcut("execution(public * com.thornBird.sbd.modules.*.controller.*.*(..))")，第三个*代表（C）
+		A、代表返回类型不限
+		B、代表module下所有子包
+		C、代表所有类
+		D、代表所有方法
+	Url匹配风格中/admin*，以下哪个匹配不正确（D）
+		A、/admin
+		B、/admin1
+		C、/admin123
+		D、/admin/1
+	Mybatis框架中，插入数据使用那个注解（B）
+		A、@Update
+		B、@Insert
+		C、@Select
+		D、@InsertMapping
+二、填空题（共5小题，每小题5分，共25分）
+	Java配置依赖的2个注解是_@Bean_，@Confirguration；
+	修改tomcat端口号为9090应该怎么写？___port="9090"_；
+	自定义拦截器需要实现__Interceptor_接口；
+	过滤器需要使用___@WebFilter____注解；
+	上传文件，使用__@PostMapping_接收文件对象，consumer使用__"application/json"___；
+三、问答题（每题5分）
+	简述Spring
+1.Spring是一个开源框架,它是为了解决企业应用开发的复杂性而创建的。
+2.Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。
+3.Spring的核心是控制反转（IoC）和面向切面（AOP）。
+      简单来说，Spring是一个分层的JavaSE/EEfull-stack(一站式) 轻量级开源框架
+
+	简述Git使用流程，写几个常用Git命令；
+1.创建一个存储仓库
+2.配置ssh key
+3.拷贝远程仓库到本地
+4.创建分支（git命令：git branch）
+5.提交修改(git命令：git diff file_name)
+6.查看历史提交（git命令：git log）
+
+	简述敏捷开发、Scrum流程；
+1.我们首先需要确定一个Product Backlog（按优先顺序排列的一个产品需求列表）
+2.有了Product Backlog列表，我们需要通过 Sprint Planning Meeting（Sprint计划会议）
+  来从中挑选出一个Story作为本次迭代完成的目标，然后把这个Story进行细化，形成一个Sprint Backlog；
+3.Sprint Backlog是由Scrum Team去完成的，每个成员根据Sprint Backlog再细化成更小的任务（细到每个任务的工作量在2天内能完成）；
+4.在Scrum Team完成计划会议上选出的Sprint Backlog过程中，需要进行 Daily Scrum Meeting（每日站立会议），
+每次会议控制在15分钟左右，每个人都必须发言，并且要向所有成员当面汇报你昨天完成了什么，
+并且向所有成员承诺你今天要完成什么，同时遇到不能解决的问题也可以提出，每个人回答完成后，要走到黑板前更新自己的 Sprint burn down
+5.做到每日集成，也就是每天都要有一个可以成功编译、并且可以演示的版本；
+很多人可能还没有用过自动化的每日集成，其实TFS就有这个功能，它可以支持每次有成员进行签入操作的时候，在服务器上自动获取最新版本，
+然后在服务器中编译，如果通过则马上再执行单元测试代码，如果也全部通过，则将该版本发布，这时一次正式的签入操作才保存到TFS中，中间有任何失败，都会用邮件通知项目管理人员；
+6.当一个Story完成，也就是Sprint Backlog被完成，也就表示一次Sprint完成，这时，我们要进行 Srpint Review Meeting（演示会议），也称为评审会议，产品负责人和客户都要参加（最好本公司老板也参加），每一个Scrum Team的成员都要向他们演示自己完成的软件产品（这个会议非常重要，一定不能取消）；
+7.最后就是 Sprint Retrospective Meeting（回顾会议），也称为总结会议，以轮流发言方式进行，每个人都要发言，总结并讨论改进的地方，放入下一轮Sprint的产品需求中；
+
+	简述shiro两大功能实现流程；
+1.身份认证/登录:验证用户是不是拥有相应的身份；
+2.授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限
+当用户前台登录发起请求时：
+1.从shiro中获取subject主体
+   SecurityUtils.getSubject();
+2.判断当前用户是否认证过了，如果认证过了就放行了
+   subject.isAuthenticated()
+3.如果没有认证过，就把前台传递的账号密码封装为一个UserNamePasswordToken对象，
+   new UsernamePasswordToken(username, password);
+4.把UserNamePasswordToken对象传入，进行登录操作
+   subject.login(usernamepasswordtoken);
+5.我们配置的安全管理器中实现了doGetAuthenticationInfo方法，从数据库查询用户数据，加密加盐后进行shiro的认证
+6.如果认证成功，进行权限赋于。
+7.根据配置shiro的真实过滤器跳转至登录成功页面或登录失败的页面。
+
+四、编程题（共2小题，1题12分，2题13分，共25分）
+	访问控制层，将一个List装入requset中，再在页面上以表格的形式显示出来
+@Controller
+@RequestMapping("/book")  
+public class BookController {
+	@Autowired
+	Bookservice bookservice;
+
+	@RequestMapping("/index")
+	String index(@RequestParam(defaultValue="1")Integer pageNum, Model model) {
+		PageInfo<Book> pageInfo =bookservice.findAll(pageNum);
+		
+		List<Book> books=pageInfo.getList();
+	
+		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("BOOKS", books);
+		
+		return "book/index";
+	}
+}
+	请写出重定向到某个页面的代码
+@RequestMapping("/edit")
+	String edit(int id,Model m) {
+		Book b=	bookservice.getById(id);
+		m.addAttribute("BOOK",b);
+		return "book/edit";
+	}
